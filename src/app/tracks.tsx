@@ -2,7 +2,7 @@ import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import CreateTrack from './CreateTrack'
 
 const API =  "http://ws.audioscrobbler.com/2.0/"
-const apiKey = "e0e89b5cfe9a4e2788c1cc83a083348d"
+const apiKey = "YOUR_API_KEY"
 
 async function getTopTracks(user: string) {
     const endpoint : string = `${API}?method=user.gettoptracks&user=${user}&api_key=${apiKey}&period=7day&limit=5&format=json`
@@ -19,7 +19,7 @@ async function getAlbumImg(artistName: string, songName: string) {
         const data = await response.json()
 
         const albumImage = data.track.album.image.find(
-            (image: { size: string} ) => image.size === 'medium'
+            (image: { size: string} ) => image.size === 'large'
         )
         
         if (albumImage && albumImage['#text']) {

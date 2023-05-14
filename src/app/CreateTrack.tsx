@@ -33,6 +33,7 @@ export default function CreateTrack ({ track, index}: TrackProps) {
                     height={100}
                     className="rounded-xl"
                     priority={true}
+                    unoptimized={true}
                 />
             </div>
             <div className="flex flex-col font-sans font-medium antialiased">
