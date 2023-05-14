@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import Image from 'next/image'
+import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import CreateTrack from './CreateTrack'
 
 const API =  "http://ws.audioscrobbler.com/2.0/"
-const apiKey = "YOUR_API_KEY"
+const apiKey = "e0e89b5cfe9a4e2788c1cc83a083348d"
 
 async function getTopTracks(user: string) {
     const endpoint : string = `${API}?method=user.gettoptracks&user=${user}&api_key=${apiKey}&period=7day&limit=5&format=json`
@@ -10,8 +10,54 @@ async function getTopTracks(user: string) {
 	const data = await response.json()
     console.log(data)
 	return data["toptracks"]["track"]
-}	
+}
 
+async function getAlbumImg(artistName: string, songName: string) {
+    try {
+        const endpoint: string = `${API}?method=track.getinfo&artist=${artistName}&track=${songName}&api_key=${apiKey}&autocorrect=1&format=json`
+        const response = await fetch(endpoint)
+        const data = await response.json()
+
+        const albumImage = data.track.album.image.find(
+            (image: { size: string} ) => image.size === 'medium'
+        )
+        
+        if (albumImage && albumImage['#text']) {
+            return albumImage['#text']
+        } else {
+            return null
+        }
+    } catch (error) {
+        console.error('Error fetching album image:', error)
+        return null
+    }
+}
+
+interface fetchDataProps {
+    user: string;
+    setTracks: Dispatch<SetStateAction<Track[]>>
+}
+
+async function fetchData({user, setTracks}: fetchDataProps) {
+    try {
+        const tracks = await getTopTracks(user)
+
+        // fetch album image for each track
+        const albumImgPromise = tracks.map((track: Track) => getAlbumImg(track.artist.name, track.name)
+        )
+        const albumImgs = await Promise.all(albumImgPromise)
+
+        // add .albumImg for each track
+        const tracksWithImgs = tracks.map((track: Track, index: number) => ({
+            ...track,
+            albumImg: albumImgs[index]
+        }))
+
+        setTracks(tracksWithImgs)
+    } catch (error) {
+        console.error('Error fetching data:', error)
+    }
+}
 
 interface Track {
     name: string;
@@ -34,81 +80,23 @@ interface TracksProp {
 
 export default function Tracks({ user }: TracksProp) {
     const [tracks, setTracks] = useState<Track[]>([])
-
+    
+    // fetch top 5 tracks for user
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const tracks = await getTopTracks(user);
-                const albumImgPromise = tracks.map((track: Track) => 
-                getAlbumImg(track.artist.name, track.name)
-                );
-                const albumImgs = await Promise.all(albumImgPromise);
-                const tracksWithImgs = tracks.map((track: Track, index: number) => ({
-                ...track,
-                albumImg: albumImgs[index]
-              }));
-              setTracks(tracksWithImgs);
-            } catch (error) {
-              console.error('Error fetching data:', error);
-            }
-          };
-        
-          fetchData();
+        fetchData({user, setTracks});
     }, [user])
 
-    const getAlbumImg = async (artistName: string, songName: string) => {
-        try {
-            const endpoint: string = `${API}?method=track.getinfo&artist=${artistName}&track=${songName}&api_key=${apiKey}&autocorrect=1&format=json`;
-            const response = await fetch(endpoint);
-            const data = await response.json();
-        
-            const albumImage = data.track.album.image.find(
-              (image: { size: string }) => image.size === 'large'
-            );
-        
-            if (albumImage && albumImage['#text']) {
-              return albumImage['#text'];
-            } else {
-              return null; // or return an empty string: ''
-            }
-        } catch (error) {
-            console.error('Error fetching album image:', error);
-            return null; // or return an empty string: ''
-        }
-    };
+
 
     return (
-        <div className="bg-white rounded-xl w-2/4">
+        <div className="bg-tracklist rounded-3xl w-2/4">
             <ul
-             className="space-y-2"
+             className="space-y-3 py-2 px-3"
             >
                 {tracks.map((track, index) => (
-                    <>
-                        <li key={index}
-                            className="rounded-xl w-2/5 p-3 text-black"
-                        >
-                            {track.albumImg ? (
-                                <Image
-                                    src={track.albumImg}
-                                    alt="Album Image"
-                                    width={90}
-                                    height={90}
-                                    className="rounded-xl"
-                                />
-                                ) : (
-                                <></>
-                            )}
-                            {track.name}
-                            <br></br>
-                            {track.artist.name}
-                            <br></br>
-                            {track.playcount} plays
-                        </li>
-                    </>
+                    <CreateTrack key={index} track={track} index={index}/>
                 ))}
             </ul>
         </div>
     )
 }
-
-

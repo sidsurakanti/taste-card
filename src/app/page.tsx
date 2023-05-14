@@ -1,13 +1,19 @@
 'use client';
 
-import { data } from "autoprefixer"
 import Tracks from "./tracks"
-
+import NavBar from "./NavBar";
 
 export default function Main() {
 	return (
-		<div>
-			<Tracks user="shweeb_"/>
-		</div>
+		<>
+			<header className="m-10">
+				<NavBar/>
+			</header>
+			<section className="m-10">
+				<div>
+					<Tracks user="shweeb_"/>
+				</div>
+			</section>
+		</>
 	)
 }
