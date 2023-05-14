@@ -1,4 +1,8 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+    images: {
+        domains: ['lastfm.freetls.fastly.net']
+    },
+}
 
 module.exports = nextConfig
