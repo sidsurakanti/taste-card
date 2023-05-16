@@ -8,7 +8,7 @@ import { useRef } from 'react';
 
 
 export default function Main() {
-	const img = useRef();
+	const img = useRef<HTMLDivElement>(null);
 
 	const downloadImage = () => {
         domtoimage.toBlob(img.current)
@@ -27,7 +27,12 @@ export default function Main() {
 					<Tracks user="shweeb_"/>
 				</div>
 			</section>
-			<button className="mx-10 bg-gray-300 p-3 font-medium rounded-full" onClick={downloadImage}>Download</button>
+			<button
+				className="mx-10 bg-gray-300 p-3 font-medium rounded-full"
+				onClick={downloadImage}
+			>
+				Download
+			</button>
 		</>
 	)
 }
