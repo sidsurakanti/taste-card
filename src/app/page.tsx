@@ -29,7 +29,7 @@ export default function Main() {
 				</div>
 			</section>
 			<button
-				className="button-gradiant w-44 mx-28 p-5 text-white rounded-3xl"
+				className="button-gradiant w-44 mx-28 p-5 text-white text-lg rounded-3xl"
 				onClick={downloadImage}
 			>
 				Download
