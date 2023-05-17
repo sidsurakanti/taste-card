@@ -1,10 +1,11 @@
-import './globals.css'
-import { Montserrat } from 'next/font/google'
+import 'public/globals.css'
+import { Poppins } from 'next/font/google'
 
-const sans = Montserrat({
+
+const poppins = Poppins({
 	subsets: ['latin'],
-	variable: '--font-montserrat',
-	weight: ['400', '500', '600', '700']
+	variable: '--font-poppins',
+	weight: ['200', '300', '400', '500', '600', '700']
 })
 
 export const metadata = {
@@ -15,7 +16,7 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
 		<html lang="en">
-			<body className={`${sans.className} bg-background`}>
+			<body className={`${poppins.className} w-full h-full bg-background`}>
 			{children}
 			</body>
 		</html>

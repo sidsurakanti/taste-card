@@ -8,11 +8,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'background': "#1E1E1E",
-        'tracklist': "#E8E8E8"
+        'background': "#000",
+        'tracklist': "#e7e7e7",
+        'button': "#7963FF",
       },
       fontFamily: {
-        sans: ['var(--font-montserrat)'],
+        poppins: ['var(--font-poppins)'],
       }
     },
   },

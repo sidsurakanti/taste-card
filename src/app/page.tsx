@@ -1,10 +1,11 @@
 'use client';
 
-import Tracks from "./tracks"
-import NavBar from "./NavBar";
+import Tracks from "../components/TrackList"
+import NavBar from "../components/NavBar";
 import domtoimage from 'dom-to-image';
 import { saveAs } from 'file-saver';
 import { useRef } from 'react';
+import "./styles.css"
 
 
 export default function Main() {
@@ -19,16 +20,16 @@ export default function Main() {
 
 	return (
 		<>
-			<header className="m-10">
+			<header className="my-10 mx-20">
 				<NavBar/>
 			</header>
-			<section className="m-10">
+			<section className="my-10 mx-28">
 				<div ref={img}>
 					<Tracks user="shweeb_"/>
 				</div>
 			</section>
 			<button
-				className="mx-10 bg-gray-300 p-3 font-medium rounded-full"
+				className="button-gradiant w-44 mx-28 p-5 text-white rounded-3xl"
 				onClick={downloadImage}
 			>
 				Download

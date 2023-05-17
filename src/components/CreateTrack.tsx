@@ -36,7 +36,7 @@ export default function CreateTrack ({ track, index}: TrackProps) {
                     unoptimized={true}
                 />
             </div>
-            <div className="flex flex-col font-sans font-medium antialiased">
+            <div className="flex flex-col font-montserrat font-medium antialiased">
                 <p className="text-lg font-bold antialiased">{track.name.toUpperCase()}</p>
                 <p>{track.artist.name.toUpperCase()}</p>
                 <p>{track.playcount} PLAYS</p>
