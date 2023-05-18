@@ -3,7 +3,6 @@
 }
 
 .button-gradiant {
-    background: linear-gradient(90deg, #000000 -100%, #551992 100%);
+    background: linear-gradient(90deg, #8348bd, #551992);
 }
-
 

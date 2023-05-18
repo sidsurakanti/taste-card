@@ -1,5 +1,5 @@
 import Image from "next/image";
-import '../app/styles.css'
+import 'public/styles.css'
 
 interface userProfile {
     username: string | undefined;

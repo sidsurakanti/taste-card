@@ -1,39 +1,34 @@
-'use client';
+'use client'
 
-import Tracks from "../components/TrackList"
-import NavBar from "../components/NavBar";
-import domtoimage from 'dom-to-image';
-import { saveAs } from 'file-saver';
-import { useRef } from 'react';
-import "./styles.css"
-
+import Link from "next/link";
+import NavBar from "@/components/NavBar";
+import { useState } from 'react'
+import React from "react";
 
 export default function Main() {
-	const img = useRef<HTMLDivElement>(null);
+	const [username, setUsername] = useState('');
 
-	const downloadImage = () => {
-        domtoimage.toBlob(img.current)
-            .then(function (blob) {
-                saveAs(blob, 'img.png');
-            });
-    };	
+	const handleChange = (e) => {
+	  setUsername(e.target.value);
+	};
 
 	return (
 		<>
-			<header className="my-10 mx-20">
-				<NavBar/>
-			</header>
-			<section className="my-10 mx-28">
-				<div ref={img}>
-					<Tracks user="shweeb_"/>
-				</div>
-			</section>
-			<button
-				className="button-gradiant w-44 mx-28 p-5 text-white text-lg rounded-3xl"
-				onClick={downloadImage}
+			<NavBar/>
+			<div className="search-bar">
+				<input
+				type="text"
+				value={username}
+				onChange={handleChange}
+				placeholder="Enter username"
+				/>
+			</div>
+			<Link 
+				href={`/results?username=${username}`}
+				className="text-white"
 			>
-				Download
-			</button>
+				Send
+			</Link>
 		</>
 	)
 }

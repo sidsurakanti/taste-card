@@ -17,7 +17,7 @@ export async function getUserProfile(user: string) {
 }
 
 async function getTopTracks(user: string) {
-    const endpoint: string = `${API}?method=user.gettoptracks&user=${user}&api_key=${apiKey}&period=12month&limit=5&format=json`
+    const endpoint: string = `${API}?method=user.gettoptracks&user=${user}&api_key=${apiKey}&period=7day&limit=5&format=json`
 	const response = await fetch(endpoint)
 	const data = await response.json()
     console.log(data.toptracks)

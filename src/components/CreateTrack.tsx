@@ -27,7 +27,7 @@ export default function CreateTrack ({ track, index}: TrackProps) {
         >
             <div>
                 <Image
-                    src={track.albumImg ? track.albumImg : "/filler.jpg"}
+                    src={track.albumImg ? track.albumImg : "/assets/filler.jpg"}
                     alt="Album Image"
                     width={100}
                     height={100}
