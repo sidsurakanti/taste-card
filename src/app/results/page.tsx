@@ -1,12 +1,16 @@
 'use client'
 
-import Tracks from "../../components/TrackList"
-import NavBar from "../../components/NavBar";
+import Tracks from "@/components/TrackList"
+import NavBar from "@/components/NavBar";
+
 import domtoimage from 'dom-to-image';
+
 import { saveAs } from 'file-saver';
 import { useRef } from 'react';
-import "public/styles.css"
 import { useSearchParams } from 'next/navigation';
+
+import "public/styles.css"
+
 
 export default function Results() {
 	const searchParams = useSearchParams()

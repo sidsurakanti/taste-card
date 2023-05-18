@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from "react"
 
 const API =  "http://ws.audioscrobbler.com/2.0/"
-const apiKey = "YOUR_LAST_FM_API_KEY"
+const apiKey = "YOUR_LASTFM_API_KEY"
 
 export async function getUserProfile(user: string) {
     const endpoint: string = `${API}?method=user.getinfo&user=${user}&api_key=${apiKey}&format=json`

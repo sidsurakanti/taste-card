@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import NavBar from "@/components/NavBar";
+import SearchBar from "@/components/SearchBar";
 import { useState } from 'react'
 import React from "react";
 
@@ -14,21 +15,15 @@ export default function Main() {
 
 	return (
 		<>
-			<NavBar/>
-			<div className="search-bar">
-				<input
-				type="text"
-				value={username}
-				onChange={handleChange}
-				placeholder="Enter username"
+			<header className="my-10 mx-20">
+				<NavBar/>
+			</header>
+			<section className="w-full h-96 flex flex-row justify-center items-center">
+				<SearchBar
+					username={username}
+					handleChange={handleChange}
 				/>
-			</div>
-			<Link 
-				href={`/results?username=${username}`}
-				className="text-white"
-			>
-				Send
-			</Link>
+			</section>
 		</>
 	)
 }

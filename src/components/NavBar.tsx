@@ -4,7 +4,7 @@ export default function NavBar(){
     return (
         <nav className="flex bg-transparent text-lg font-medium text-white space-x-10 p-4">
             <Link href="/">
-                about
+                home
             </Link>
             <a href="https://github.com/sidsurakanti" target="_blank" rel="noopener noreferrer" className="">
                 github
