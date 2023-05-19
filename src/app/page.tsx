@@ -21,17 +21,17 @@ export default function Main() {
 
 	return (
 		<section className="w-screen h-4/6 flex flex-col justify-center gap-5 items-center">
-			<p className="text-white text-xl">Find tracks</p>
-			<div className="bg-container p-6">
+			<p className="text-white text-3xl font-bold">Find Tracks</p>
+			<div className="flex flex-row space-x-5 p-6">
 				<SearchBar username={username} handleChange={handleUsernameChange} />
 				<Selections currentPeriod={period} onPeriodChange={handlePeriodChange} />
-				<div className="flex flex-row justify-center my-5">
+				{/* <div className="flex flex-row justify-center my-5">
 					<Link href={`/results?username=${username}&period=${period}`}>
 						<button className="w-28 bg-pink-500 rounded-xl p-3 text-white" type="submit">
 							Go
 						</button>
 					</Link>
-				</div>
+				</div> */}
 			</div>
 		</section>
 	)

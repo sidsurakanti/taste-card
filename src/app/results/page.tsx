@@ -21,6 +21,7 @@ export default function Results() {
 	const img = useRef<HTMLDivElement>(null);
 
 	const downloadImage = () => {
+		// @ts-ignore
         domtoimage.toBlob(img.current)
             .then(function (blob) {
                 saveAs(blob, 'img.png');
@@ -31,6 +32,7 @@ export default function Results() {
 		<>
 			<section className="my-10 mx-28">
 				<div ref={img}>
+					{/* @ts-ignore */}
 					<Tracks user={username} period={period}/>
 				</div>
 			</section>

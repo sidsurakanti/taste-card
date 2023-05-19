@@ -13,7 +13,7 @@ export default function CreateProfile ({ username, realname, profile_url }: user
         <div className="w-2/6 min-w-max">
             <span className="profile text-white rounded-3xl flex flex-row justify-center gap-4 my-3 mx-3 p-4">
                 <Image 
-                    src={profile_url}
+                    src={profile_url || ''}
                     alt="User profile picture"
                     width={80}
                     height={80}
