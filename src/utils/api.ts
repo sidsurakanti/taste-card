@@ -1,23 +1,11 @@
 import { Dispatch, SetStateAction } from "react"
 
+
 const API =  "http://ws.audioscrobbler.com/2.0/"
-const apiKey = "YOUR_LASTFM_API_KEY"
+const apiKey = process.env.NEXT_PUBLIC_LAST_FM_API_KEY
 
-export async function getUserProfile(user: string) {
-    const endpoint: string = `${API}?method=user.getinfo&user=${user}&api_key=${apiKey}&format=json`
-    const response = await fetch(endpoint)
-	const data = await response.json()
-    console.log(data.user)
-    const res = {
-        username: data.user.name,
-        realname: data.user.realname,
-        profile_url:  data.user.image[3]["#text"]
-    }
-    return res
-}
-
-async function getTopTracks(user: string) {
-    const endpoint: string = `${API}?method=user.gettoptracks&user=${user}&api_key=${apiKey}&period=7day&limit=5&format=json`
+async function getTopTracks(user: string, period: string) {
+    const endpoint: string = `${API}?method=user.gettoptracks&user=${user}&api_key=${apiKey}&period=${period}&limit=5&format=json`
 	const response = await fetch(endpoint)
 	const data = await response.json()
     console.log(data.toptracks)
@@ -30,6 +18,7 @@ async function getAlbumImg(artistName: string, songName: string) {
         const response = await fetch(endpoint)
         const data = await response.json()
         console.log(data)
+
         const albumImage = data.track.album.image.find(
             (image: { size: string} ) => image.size === 'large'
         )
@@ -61,12 +50,13 @@ export interface Track {
 
 interface fetchDataProps {
     user: string;
+    period: string;
     setTracks: Dispatch<SetStateAction<Track[]>>
 }
 
-export async function fetchData({user, setTracks}: fetchDataProps) {
+export async function fetchData({user, period, setTracks}: fetchDataProps) {
     try {
-        const tracks = await getTopTracks(user)
+        const tracks = await getTopTracks(user, period)
 
         // fetch album image for each track
         const albumImgPromise = tracks.map((track: Track) => getAlbumImg(track.artist.name, track.name))
@@ -82,4 +72,17 @@ export async function fetchData({user, setTracks}: fetchDataProps) {
     } catch (error) {
         console.error('Error fetching data:', error)
     }
+}
+
+export async function getUserProfile(user: string) {
+    const endpoint: string = `${API}?method=user.getinfo&user=${user}&api_key=${apiKey}&format=json`
+    const response = await fetch(endpoint)
+	const data = await response.json()
+    console.log(data.user)
+    const res = {
+        username: data.user.name,
+        realname: data.user.realname,
+        profile_url:  data.user.image[3]["#text"]
+    }
+    return res
 }

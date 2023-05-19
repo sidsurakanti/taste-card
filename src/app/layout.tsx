@@ -1,6 +1,6 @@
 import 'public/globals.css'
 import { Poppins } from 'next/font/google'
-
+import NavBar from '@/components/NavBar'
 
 const poppins = Poppins({
 	subsets: ['latin'],
@@ -17,7 +17,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 	return (
 		<html lang="en" className='w-full h-full'>
 			<body className={`${poppins.className} bg-background`}>
-			{children}
+				<header className="my-10 mx-20">
+					<NavBar/>
+				</header>
+				{children}
 			</body>
 		</html>
 	)

@@ -8,9 +8,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'background': "#000",
+        'background': "#282828",
         'tracklist': "#e7e7e7",
         'button': "#7963FF",
+        'accent': "#ffb7c5"
       },
       fontFamily: {
         poppins: ['var(--font-poppins)'],

@@ -1,21 +1,22 @@
 'use client'
 
-import Tracks from "@/components/TrackList"
-import NavBar from "@/components/NavBar";
-
 import domtoimage from 'dom-to-image';
 
 import { saveAs } from 'file-saver';
 import { useRef } from 'react';
 import { useSearchParams } from 'next/navigation';
 
+import Tracks from "@/components/TrackList"
 import "public/styles.css"
 
 
 export default function Results() {
 	const searchParams = useSearchParams()
 	const username = searchParams.get('username')
+	const period = searchParams.get('period')
+
 	console.log(username)
+	console.log(period)
 
 	const img = useRef<HTMLDivElement>(null);
 
@@ -28,16 +29,13 @@ export default function Results() {
 
 	return (
 		<>
-			<header className="my-10 mx-20">
-				<NavBar/>
-			</header>
 			<section className="my-10 mx-28">
 				<div ref={img}>
-					<Tracks user={username}/>
+					<Tracks user={username} period={period}/>
 				</div>
 			</section>
 			<button
-				className="button-gradiant w-44 mx-28 p-5 text-white text-lg rounded-3xl"
+				className="button-gradiant border-2 border-white w-40 mx-28 p-3 text-white text-lg rounded-full"
 				onClick={downloadImage}
 			>
 				Download

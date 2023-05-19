@@ -1,6 +1,3 @@
-import Link from "next/link";
-
-
 export default function SearchBar ( { username, handleChange } : {username: string, handleChange: any} ) {
     return (
         <div>
@@ -9,13 +6,10 @@ export default function SearchBar ( { username, handleChange } : {username: stri
                     type="text"
                     value={username}
                     onChange={handleChange}
-                    placeholder="Enter username..."
-                    className="outline-none p-4 text-xl bg-transparent text-white"
+                    placeholder="Enter Username"
+                    className="outline-none border-pink-200 border-l-4 p-3 p text-lg text-white bg-transparent"
                 />
-                <Link href={`/results?username=${username}`}>
-                    <button type="submit"></button>
-                </Link>
-        </form>
-      </div>
+            </form>
+        </div>
     )
 }

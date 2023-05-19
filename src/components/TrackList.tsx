@@ -5,7 +5,8 @@ import { Track, getUserProfile, fetchData} from "../utils/api"
 
 
 interface TracksProp {
-    user: string
+    user: string,
+    period: string,
 }
 
 interface userProfile {
@@ -14,22 +15,20 @@ interface userProfile {
     profile_url: string;
 }
 
-export default function Tracks({ user }: TracksProp) {
+export default function Tracks({ user, period }: TracksProp) {
     const [tracks, setTracks] = useState<Track[]>([])
     const [userProfile, setUserProfile] = useState<userProfile>();
 
     // fetch top 5 tracks for user synchronously
     useEffect(() => {
-        fetchData({user, setTracks});
+        fetchData({user, period, setTracks});
 
-        // fetch user profile 
         getUserProfile(user)
             .then((result: userProfile) => setUserProfile(result))
             .catch((error) => {
-                // handle error if the user profile picture cannot be fetched
                 console.error("Error fetching user profile picture:", error);
-        });
-    }, [user])
+            });
+    }, [user, period])
 
     return (
         <div className="bg-tracklist rounded-3xl w-3/5 flex flex-row justify-between">
@@ -37,11 +36,19 @@ export default function Tracks({ user }: TracksProp) {
              className="space-y-3 py-2 px-3"
             >
                 {tracks.map((track, index) => (
-                    <CreateTrack key={index} track={track} index={index}/>
+                    <CreateTrack 
+                        key={index}
+                        track={track}
+                        index={index}
+                    />
                 ))}
             </ul>
 
-            <CreateProfile username={userProfile?.username} realname={userProfile?.realname} profile_url={userProfile?.profile_url}/>
+            <CreateProfile 
+                username={userProfile?.username}
+                realname={userProfile?.realname}
+                profile_url={userProfile?.profile_url}
+            />
         </div>
     )
 }
