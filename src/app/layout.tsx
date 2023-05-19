@@ -17,7 +17,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 	return (
 		<html lang="en">
 			<body className={`${poppins.className} bg-background w-screen h-screen overflow-hidden`}>
-				<header className="my-10 mx-20">
+				<header className="my-8 mx-20">
 					<NavBar/>
 				</header>
 				{children}
