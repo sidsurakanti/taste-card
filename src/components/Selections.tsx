@@ -12,7 +12,7 @@ export default function Selections({ currentPeriod, onPeriodChange }: Selections
                 <button
                     key={period}
                     onClick={() => onPeriodChange(period)}
-                    className={`bg-white rounded-full p-1 px-2 text-sm ${currentPeriod === period ? 'bg-pink-400 text-white' : ''}`}
+                    className={`rounded-full p-1 px-2 text-sm ${currentPeriod === period ? 'text-white bg-pink-400' : 'bg-white text-black'}`}
                 >
                     {period}
                 </button>
