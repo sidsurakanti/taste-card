@@ -9,6 +9,7 @@ module.exports = {
     extend: {
       colors: {
         'background': "#282828",
+        'container': "#333333",
         'tracklist': "#e7e7e7",
         'button': "#7963FF",
         'accent': "#ffb7c5"
