@@ -30,14 +30,14 @@ export default function Results() {
 
 	return (
 		<>
-			<section className="my-10 mx-28">
+			<section className="my-8 mx-28">
 				<div ref={img}>
 					{/* @ts-ignore */}
 					<Tracks user={username} period={period}/>
 				</div>
 			</section>
 			<button
-				className="button-gradiant border-2 border-white w-40 mx-28 p-3 text-white text-lg rounded-full"
+				className="bg-[rgba(0,0,0,.5)] w-40 mx-28 p-3 text-white text-lg rounded-xl"
 				onClick={downloadImage}
 			>
 				Download

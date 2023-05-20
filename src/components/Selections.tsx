@@ -1,54 +1,34 @@
-import * as Select from '@radix-ui/react-select';
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select"
+
 
 interface SelectionsProp {
-  currentPeriod: string
-  onPeriodChange: any
+    currentPeriod: string
+    onPeriodChange: any
 }
 
 export default function Selections({
-  currentPeriod,
-  onPeriodChange,
+    currentPeriod,
+    onPeriodChange,
 }: SelectionsProp) {
-  const periods = ['7day', '1month', '3month', '6month', '12month']
-  const displayPeriod = ['a Week', 'a Month', '3 Months', '6 Months', 'a Year']
+    const displayPeriod = ['1 week', '1 month', '3 months', '6 months', '1 year']
+    const periods = ['7day', '1month', '3month', '6month', '12month'];
 
-  return (
-    <Select.Root>
-    <Select.Trigger>
-      <Select.Value  />
-      <Select.Icon />
-    </Select.Trigger>
-
-    <Select.Portal>
-      <Select.Content>
-        <Select.ScrollUpButton />
-        <Select.Viewport>
-          <Select.Item value={'a'}>
-            <Select.ItemText placeholder='a' />
-            <Select.ItemIndicator />
-          </Select.Item>
-
-          <Select.Group>
-            <Select.Label  />
-            <Select.Item value={'a'}>
-              <Select.ItemText />
-              <Select.ItemIndicator />
-            </Select.Item>
-          </Select.Group>
-
-          <Select.Separator />
-        </Select.Viewport>
-        <Select.ScrollDownButton />
-        <Select.Arrow />
-      </Select.Content>
-    </Select.Portal>
-  </Select.Root>
-    // <select value={currentPeriod} onChange={onPeriodChange} className='p-3  border-[rgba(255,255,255,0.2)] bg-[rgba(217,217,217,0.1)]  rounded-xl outline-none '>
-    //   {displayPeriod.map((v, i) => (
-    //     <option key={i} value={periods[i]}>
-    //       {v}
-    //     </option>
-    //   ))}
-    // </select>
-  )
+    return (
+        <Select onValueChange={onPeriodChange}>
+            <SelectTrigger className="w-[160px] bg-[rgba(217,217,217,0.1)] focus:outline-none text-[rgba(255,255,255,0.7)] border-[rgba(255,255,255,0.3)]">
+                <SelectValue placeholder={currentPeriod === "3month" ? "3 months" : currentPeriod} />
+            </SelectTrigger>
+            <SelectContent className="bg-[rgba(255,255,255,0.5)] outline-none">
+                {periods.map((period, index) => (
+                    <SelectItem className="text-black bg-[rgba(217,217,217,0.1)]" key={index} value={period}>{displayPeriod[index]}</SelectItem>
+                ))}
+            </SelectContent>
+        </Select>
+    )
 }
