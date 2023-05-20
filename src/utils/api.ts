@@ -6,16 +6,33 @@ const apiKey = process.env.NEXT_PUBLIC_LAST_FM_API_KEY
 
 async function getTopTracks(user: string, period: string) {
     const endpoint: string = `${API}?method=user.gettoptracks&user=${user}&api_key=${apiKey}&period=${period}&limit=5&format=json`
-	const response = await fetch(endpoint)
-	const data = await response.json()
-    console.log(data.toptracks)
-	return data.toptracks.track
+
+    try {
+        const response = await fetch(endpoint)
+
+        if (!response.ok) {
+            throw new Error(`HTTP error. ${response.status}`)
+        }
+
+        const data = await response.json()
+        console.log(data.toptracks)
+        return data.toptracks.track
+    } catch (error) {
+        console.error("Error fetching top tracks:", error)
+        return null
+    }	
 }
 
 async function getAlbumImg(artistName: string, songName: string) {
+    const endpoint: string = `${API}?method=track.getinfo&artist=${artistName}&track=${songName}&api_key=${apiKey}&autocorrect=1&format=json`
+
     try {
-        const endpoint: string = `${API}?method=track.getinfo&artist=${artistName}&track=${songName}&api_key=${apiKey}&autocorrect=1&format=json`
         const response = await fetch(endpoint)
+
+        if (!response.ok) {
+            throw new Error(`HTTP error. ${response.status}`)
+        }
+
         const data = await response.json()
         console.log(data)
 
@@ -55,34 +72,41 @@ interface fetchDataProps {
 }
 
 export async function fetchData({user, period, setTracks}: fetchDataProps) {
-    try {
-        const tracks = await getTopTracks(user, period)
+    const tracks = await getTopTracks(user, period)
 
-        // fetch album image for each track
-        const albumImgPromise = tracks.map((track: Track) => getAlbumImg(track.artist.name, track.name))
-        const albumImgs = await Promise.all(albumImgPromise)
+    // fetch album image for each track
+    const albumImgPromise = tracks.map((track: Track) => getAlbumImg(track.artist.name, track.name))
+    const albumImgs = await Promise.all(albumImgPromise)
 
-        // add .albumImg for each track
-        const tracksWithImgs = tracks.map((track: Track, index: number) => ({
-            ...track,
-            albumImg: albumImgs[index]
-        }))
+    // add .albumImg for each track
+    const tracksWithImgs = tracks.map((track: Track, index: number) => ({
+        ...track,
+        albumImg: albumImgs[index]
+    }))
 
-        setTracks(tracksWithImgs)
-    } catch (error) {
-        console.error('Error fetching data:', error)
-    }
+    setTracks(tracksWithImgs)
 }
 
 export async function getUserProfile(user: string) {
     const endpoint: string = `${API}?method=user.getinfo&user=${user}&api_key=${apiKey}&format=json`
-    const response = await fetch(endpoint)
-	const data = await response.json()
-    console.log(data.user)
-    const res = {
-        username: data.user.name,
-        realname: data.user.realname,
-        profile_url:  data.user.image[3]["#text"]
+    try {
+        const response = await fetch(endpoint)
+
+        if (!response.ok) {
+            throw new Error(`HTTP error. ${response.status}`)
+        }
+
+        const data = await response.json()
+        console.log(data.user)
+
+        const res = {
+            username: data.user.name,
+            realname: data.user.realname,
+            profile_url:  data.user.image[3]["#text"]
+        }
+        return res
+    } catch (error) {
+        console.error('Error fetching user profile:', error)
+        return null
     }
-    return res
 }

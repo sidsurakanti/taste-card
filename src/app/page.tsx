@@ -1,9 +1,12 @@
 'use client'
 
-import Link from "next/link";
 import Selections from "@/components/Selections";
 import SearchBar from "@/components/SearchBar";
+import SelectApp from "@/components/SelectApp";
+import { buttonVariants } from "@/components/ui/button"
 import { useState } from 'react'
+
+import Link from "next/link";
 import React from "react";
 
 
@@ -20,21 +23,23 @@ export default function Main() {
 	}
 
 	return (
-		<>
-			<section className="w-full flex flex-col justify-center gap-5 items-center">
-				<p className="text-white text-lg">Find tracks</p>
-				<div className="bg-container p-6">
-					<SearchBar username={username} handleChange={handleUsernameChange} />
+		<section className="w-screen h-4/6 flex flex-col justify-center gap-5 items-center">
+			<p className="text-white text-3xl font-semibold">
+				Get your latest trends
+			</p>
+			<div className="bg-[rgba(215,215,215,.1)] flex flex-col gap-6 h-50 w-96 p-6 justify-center rounded-xl">
+				<SelectApp />
+				<SearchBar username={username} handleChange={handleUsernameChange} />
+				<div className="flex flex-row justify-between">
 					<Selections currentPeriod={period} onPeriodChange={handlePeriodChange} />
-					<div className="flex flex-row justify-center my-5">
-						<Link href={`/results?username=${username}&period=${period}`}>
-							<button className="w-28 bg-pink-500 rounded-xl p-3 text-white" type="submit">
-								Go
-							</button>
-						</Link>
-					</div>
+					<Link 
+						href={`/results?username=${username}&period=${period}`}
+						className={buttonVariants({ variant: "outline", size: "lg"})}
+					>
+						Go
+					</Link>
 				</div>
-			</section>
-		</>
+			</div>
+		</section>
 	)
 }
