@@ -7,7 +7,6 @@ import { useRef } from 'react';
 import { useSearchParams } from 'next/navigation';
 
 import Tracks from "@/components/TrackList"
-import "public/styles.css"
 
 
 export default function Results() {

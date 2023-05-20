@@ -2,6 +2,7 @@
 
 import Selections from "@/components/Selections";
 import SearchBar from "@/components/SearchBar";
+import SelectApp from "@/components/SelectApp";
 import { buttonVariants } from "@/components/ui/button"
 import { useState } from 'react'
 
@@ -27,6 +28,7 @@ export default function Main() {
 				Get your latest trends
 			</p>
 			<div className="bg-[rgba(215,215,215,.1)] flex flex-col gap-6 h-50 w-96 p-6 justify-center rounded-xl">
+				<SelectApp />
 				<SearchBar username={username} handleChange={handleUsernameChange} />
 				<div className="flex flex-row justify-between">
 					<Selections currentPeriod={period} onPeriodChange={handlePeriodChange} />

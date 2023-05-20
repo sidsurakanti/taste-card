@@ -1,5 +1,4 @@
 import Image from "next/image";
-import 'public/styles.css'
 
 
 interface userProfile {
@@ -11,7 +10,7 @@ interface userProfile {
 export default function CreateProfile ({ username, realname, profile_url }: userProfile) {
     return (
         <div className="w-2/6 min-w-max">
-            <span className="profile text-white rounded-3xl flex flex-row justify-center gap-4 my-3 mx-3 p-4">
+            <span className="bg-[rgba(255,255,255,0.2)] border-2 border-[rgba(255,255,255,0.5)] text-white rounded-3xl flex flex-row justify-center gap-4 my-3 mx-3 p-4">
                 <Image 
                     src={profile_url || ''}
                     alt="User profile picture"

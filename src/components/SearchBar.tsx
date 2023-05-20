@@ -10,7 +10,7 @@ export default function SearchBar ( { username, handleChange } : { username: str
                         type="text"
                         value={username}
                         onChange={handleChange}
-                        placeholder="Enter username"
+                        placeholder="last.fm username"
                         className="placeholder-gray-200 outline-none border-l border-[rgba(255,255,255,0.2)] py-5 pl-6 bg-transparent"
                     />
                 </div>

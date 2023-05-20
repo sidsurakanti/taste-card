@@ -24,9 +24,9 @@ export default function Selections({
             <SelectTrigger className="w-[160px] bg-[rgba(217,217,217,0.1)] focus:outline-none text-[rgba(255,255,255,0.7)] border-[rgba(255,255,255,0.3)]">
                 <SelectValue placeholder={currentPeriod === "3month" ? "3 months" : currentPeriod} />
             </SelectTrigger>
-            <SelectContent className="bg-[rgba(255,255,255,0.5)] outline-none">
+            <SelectContent className="bg-[rgba(255,255,255,0.1)] border-[rgba(255,255,255,0.3)] outline-none">
                 {periods.map((period, index) => (
-                    <SelectItem className="text-black bg-[rgba(217,217,217,0.1)]" key={index} value={period}>{displayPeriod[index]}</SelectItem>
+                    <SelectItem className="text-gray-200 bg-[rgba(217,217,217,0.1)]" key={index} value={period}>{displayPeriod[index]}</SelectItem>
                 ))}
             </SelectContent>
         </Select>

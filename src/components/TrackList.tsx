@@ -32,7 +32,7 @@ export default function Tracks({ user, period }: TracksProp) {
     }, [user, period])
 
     return (
-        <div className="bg-[rgba(255,255,255,0.467)] rounded-3xl w-3/5 flex flex-row justify-between">
+        <div className="bg-[rgba(255,255,255,0.45)] border-2 border-[rgba(225,225,225,0.6)] rounded-3xl w-3/5 flex flex-row justify-between">
             <ul
              className="space-y-2 py-2 px-3"
             >
