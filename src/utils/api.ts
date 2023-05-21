@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from "react"
 
 
-const API =  "http://ws.audioscrobbler.com/2.0/"
+const API =  "https://ws.audioscrobbler.com/2.0/"
 const apiKey = process.env.NEXT_PUBLIC_LAST_FM_API_KEY
 
 async function getTopTracks(user: string, period: string) {
