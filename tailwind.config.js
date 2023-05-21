@@ -9,8 +9,8 @@ module.exports = {
     extend: {
       colors: {
         'background': "#282828",
-        'accent': "#527CBF",
-        'primary': "#3D95FA"
+        'accent': "#000000",
+        'primary': "#B5161B"
       },
       fontFamily: {
         poppins: ['var(--font-poppins)'],

@@ -1,5 +1,5 @@
-import Image from "next/image";
-
+import Image from "next/image"
+import Link from "next/link"
 
 interface userProfile {
     username: string | undefined;
@@ -10,7 +10,18 @@ interface userProfile {
 export default function CreateProfile ({ username, realname, profile_url }: userProfile) {
     return (
         <div className="w-2/6 min-w-max">
-            <span className="bg-[rgba(255,255,255,0.2)] border-2 border-[rgba(255,255,255,0.5)] text-white rounded-3xl flex flex-row justify-center gap-4 my-3 mx-3 p-4">
+            <span 
+                className="bg-transparent
+                           border-2 border-[rgba(0,0,0,0.2)]
+                           text-black 
+                           rounded-3xl 
+                           flex flex-row 
+                           justify-center 
+                           gap-4 
+                           my-3 
+                           mx-3 
+                           p-4"
+            >
                 <Image 
                     src={profile_url || ''}
                     alt="User profile picture"
@@ -23,7 +34,11 @@ export default function CreateProfile ({ username, realname, profile_url }: user
 
                 <div className="p-4 space-y-0.25">
                     <p className="text-2xl">{realname}</p>
-                    <p className="font-light text-gray-200">/{username}</p>
+                    <p className="font-normal text-gray-800">/
+                        <Link href={`https://last.fm/user/${username}`} prefetch={true}>
+                            {username}
+                        </Link>
+                    </p>
                 </div>
             </span>
         </div>

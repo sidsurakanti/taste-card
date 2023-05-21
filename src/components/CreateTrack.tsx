@@ -20,11 +20,11 @@ interface TrackProps {
     index: number
 }
 
-export default function CreateTrack ({ track, index}: TrackProps) {
+export function CreateTrack ({ track, index}: TrackProps) {
     return (
         <li 
             key={index}
-            className="rounded-xl p-3 text-black flex flex-row space-x-5"
+            className="rounded-xl p-3 text-gray-900 flex flex-row space-x-5"
         >
             <div>
                 <Image
@@ -37,8 +37,10 @@ export default function CreateTrack ({ track, index}: TrackProps) {
                     unoptimized={true}
                 />
             </div>
-            <div className="flex flex-col font-montserrat font-medium antialiased">
-                <p className="text-lg font-bold antialiased">{track.name.toUpperCase()}</p>
+            <div className="flex flex-col font-montserrat font-medium">
+                <p className="text-lg font-bold">
+                    {track.name.toUpperCase()}
+                </p>
                 <p>{track.artist.name.toUpperCase()}</p>
                 <p>{track.playcount} PLAYS</p>
             </div>

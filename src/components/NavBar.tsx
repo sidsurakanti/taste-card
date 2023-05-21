@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from 'next/link'
 
 export default function NavBar(){
     return (
@@ -6,12 +6,19 @@ export default function NavBar(){
             <Link href="/">
                 home
             </Link>
-            <a href="https://github.com/sidsurakanti" target="_blank" rel="noopener noreferrer" className="">
+            <a 
+                href="https://github.com/sidsurakanti" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+            >
                 github
             </a>
-            <a href="https://discord.com/users/521872289231273994" target="_blank" rel="noopener noreferrer" className="">
+            <a href="https://discord.com/users/521872289231273994"
+               target="_blank"
+               rel="noopener noreferrer"
+            >
                 discord
             </a>
         </nav>
-    );
-};
+    )
+}
