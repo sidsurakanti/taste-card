@@ -35,9 +35,9 @@ export function InfoCard({ user, period }: TracksProp) {
 
 	return (
 		<section 
-			className="bg-[rgba(255,255,255,0.3)]
+			className="bg-[rgba(255,255,255,0.6)]
 					   rounded-3xl 
-					   w-3/5 
+					   w-3/5
 					   flex flex-row justify-between"
 		>
 			<ul className="space-y-2 py-2 px-3">

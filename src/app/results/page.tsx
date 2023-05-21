@@ -26,21 +26,24 @@ export default function Results() {
 
 	return (
 		<main>
-			<section className="my-8 mx-28">
+			<section className="flex flex-col my-8 mx-28 space-y-5">
 				<div ref={img}>
 					{/* @ts-ignore */}
 					<InfoCard user={username} period={period}/>
 				</div>
+				<div>
+				<button
+					className="bg-[rgba(0,0,0,.5)]
+							   w-40 p-3 
+							   text-white text-lg
+							   rounded-xl"
+					onClick={downloadImage}
+				>
+					Download
+				</button>
+				</div>
 			</section>
-			<button
-				className="bg-[rgba(0,0,0,.5)]
-						   w-40 mx-28 p-3 
-						   text-white text-lg
-						   rounded-xl"
-				onClick={downloadImage}
-			>
-				Download
-			</button>
+
 		</main>
 	)
 }
