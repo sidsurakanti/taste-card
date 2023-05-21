@@ -30,7 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
 	return (
 		<html lang="en">
-			<body className={`${poppins.className} bg-background w-screen h-screen overflow-hidden`}>
+			<body className={`${poppins.className} bg-background w-screen h-screen overflow-visible`}>
 				<Image 
 					src={gradient[randomIndex]} 
 					alt={""} 
