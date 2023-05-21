@@ -7,7 +7,7 @@ export default function NavBar(){
                 home
             </Link>
             <a 
-                href="https://github.com/sidsurakanti" 
+                href="https://github.com/sidsurakanti/taste-card/" 
                 target="_blank" 
                 rel="noopener noreferrer" 
             >
