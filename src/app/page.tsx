@@ -28,10 +28,10 @@ export default function Main() {
 
 	return (
 		<section 
-			className="w-screen h-4/6 flex flex-col justify-center gap-5 items-center"
+			className="w-screen h-4/6 flex flex-col justify-center gap-8 items-center"
 		>
-			<h1 className="text-white text-3xl font-semibold">
-				Get your latest trends
+			<h1 className="text-white text-[26px] font-semibold">
+				Uncover your listening habits
 			</h1>
 			<div 
 				className="bg-[rgba(215,215,215,.1)]

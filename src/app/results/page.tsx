@@ -26,7 +26,7 @@ export default function Results() {
 
 	return (
 		<main>
-			<section className="flex flex-col my-8 mx-28 space-y-5">
+			<section className="flex flex-col my-8 mx-32 space-y-5">
 				<div ref={img}>
 					{/* @ts-ignore */}
 					<InfoCard user={username} period={period}/>
@@ -43,7 +43,6 @@ export default function Results() {
 				</button>
 				</div>
 			</section>
-
 		</main>
 	)
 }
