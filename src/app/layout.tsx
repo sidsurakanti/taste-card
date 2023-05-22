@@ -27,22 +27,27 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	const gradient = [gradient1, gradient2, gradient3, gradient4, gradient5, gradient6]
 	const randomIndex = Math.floor(Math.random() * gradient.length);
-
 	return (
 		<html lang="en">
-			<body className={`${poppins.className} bg-background w-screen h-screen overflow-x-hidden`}>
-				<Image 
-					src={gradient[randomIndex]} 
-					alt={""} 
-					priority={true}
-					className='absolute object-cover h-screen w-screen -z-10 opacity-70 saturate-150'
-				/>
-				<header className="pt-8 pb-2 px-20">
-					<NavBar/>
-				</header>
+		  <body className={`${poppins.className} bg-background w-screen h-screen overflow-x-hidden relative flex flex-col`}>
+			<div className="fixed top-0 left-0 w-full h-full z-0 pointer-events-none">
+			  <Image
+				src={gradient[randomIndex]}
+				alt={""}
+				priority={true}
+				layout="fill"
+				objectFit="cover"
+				objectPosition="center"
+			  />
+			</div>
+			<div className="relative z-10 flex-grow">
+			  <header className="pt-8 pb-2 px-20">
+				<NavBar/>
+			  </header>
+			  <div className="overflow-y-auto pb-8">
 				{children}
-			</body>
+			  </div>
+			</div>
+		  </body>
 		</html>
-	)
-}
-
+	  );}
