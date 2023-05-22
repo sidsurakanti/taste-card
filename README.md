@@ -1,34 +1,57 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Taste Card
+Showcase your recent musical preferences in an aesthetic manner.
 
-## Getting Started
+## Overview
+The application creates a visually appealing card, displaying the user's top five songs from a selected period. 
+<br>
+This concept drew inspiration from Spotify Wrapped and [Michelle Liu's Receiptify](https://github.com/michellexliu/receiptify).
 
-First, run the development server:
+> 📝 Currently, the application offers support exclusively for [Last.fm](https://last.fm).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+## Getting started
+### Prerequisites
+- [Node.js](https://nodejs.org/)
+- [npm](https://www.npmjs.com/)
+
+### Installation 
+Clone the repository
+```shell
+git clone https://github.com/sidsurakanti/taste-card.git
 ```
+Navigate to the project directory
+```shell
+cd taste-card
+```
+Install dependencies
+```shell
+npm install
+```
+Start the project
+```shell
+npm run dev
+```
+Your application should now be running on `http://localhost:3000`.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Technologies used
+- [Node.js](https://nodejs.org/)
+- [React](https://reactjs.org/)
+- [Next.js](https://nextjs.org/)
+- [Last.fm API](https://www.last.fm/api)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Radix UI](https://www.radix-ui.com/)
+- [shadcn/ui](https://ui.shadcn.com)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Usage
+1. Visit the [website](https://tastecard.vercel.app/).
+2. Enter your last.fm username.
+3. Select your preffered time range, then click the `Go` button.
+4. Wait for the application to fetch and generate your card.
+5. Download the generated card by clicking `Download`.
+6. Share your card with your friends!
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+<img src="https://github.com/sidsurakanti/taste-card/assets/60633559/4e034260-464c-4b50-91f5-c6125c8cf9b1)" width="500" height="380">
 
-## Learn More
+<br>
+<br>
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+> Special thank you to all the contributors who have assisted me with this project! 🙌
