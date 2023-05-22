@@ -37,7 +37,7 @@ export function CreateTrack ({ track, index}: TrackProps) {
                     unoptimized={true}
                 />
             </div>
-            <div className="flex flex-col font-montserrat font-medium">
+            <div className="flex flex-col font-medium">
                 <p className="text-lg font-bold">
                     {track.name.toUpperCase()}
                 </p>

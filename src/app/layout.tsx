@@ -30,12 +30,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
 	return (
 		<html lang="en">
-			<body className={`${poppins.className} bg-background w-screen h-screen overflow-hidden`}>
+			<body className={`${poppins.className} bg-background w-screen h-screen overflow-x-hidden`}>
 				<Image 
 					src={gradient[randomIndex]} 
 					alt={""} 
 					priority={true}
-					className='absolute object-cover h-full w-full -z-10 opacity-70 saturate-150'
+					className='absolute object-cover h-screen w-screen -z-10 opacity-70 saturate-150'
 				/>
 				<header className="pt-8 pb-2 px-20">
 					<NavBar/>
