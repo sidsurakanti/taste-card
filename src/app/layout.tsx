@@ -29,15 +29,26 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 	const randomIndex = Math.floor(Math.random() * gradient.length);
 	return (
 		<html lang="en">
-		  <body className={`${poppins.className} bg-background w-screen h-screen overflow-x-hidden relative flex flex-col`}>
-			<div className="fixed top-0 left-0 w-full h-full z-0 pointer-events-none">
+		  <body 
+		  	className={
+					`${poppins.className}
+					bg-background 
+					w-screen h-screen 
+					overflow-x-hidden 
+					relative 
+					flex flex-col`}
+			>
+			<div 
+				className="fixed
+						   top-0 left-0 
+						   w-full h-full 
+						   z-0 
+						   pointer-events-none"
+			>
 			  <Image
 				src={gradient[randomIndex]}
 				alt={""}
 				priority={true}
-				layout="fill"
-				objectFit="cover"
-				objectPosition="center"
 			  />
 			</div>
 			<div className="relative z-10 flex-grow">

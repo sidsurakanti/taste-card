@@ -28,7 +28,11 @@ export default function Main() {
 
 	return (
 		<section 
-			className="w-screen h-4/6 flex flex-col justify-center gap-8 items-center"
+			className="w-screen
+					   p-32 
+					   flex flex-col 
+					   justify-center gap-8 
+					   items-center"
 		>
 			<h1 className="text-white text-[26px] font-semibold">
 				Uncover your listening habits
