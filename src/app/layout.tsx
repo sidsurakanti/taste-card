@@ -3,12 +3,11 @@ import { Poppins } from 'next/font/google'
 import Image from 'next/image'
 import NavBar from '@/components/NavBar'
 
-import gradient1 from '../../public/assets/gradients/Gradient1.png'
-import gradient2 from '../../public/assets/gradients/Gradient2.png'
-import gradient3 from '../../public/assets/gradients/Gradient3.png'
-import gradient4 from '../../public/assets/gradients/Gradient4.png'
-import gradient5 from '../../public/assets/gradients/Gradient5.png'
-import gradient6 from '../../public/assets/gradients/Gradient6.png'
+import gradient1 from '../../public/assets/gradients/Gradient2.png'
+import gradient2 from '../../public/assets/gradients/Gradient3.png'
+import gradient3 from '../../public/assets/gradients/Gradient4.png'
+import gradient4 from '../../public/assets/gradients/Gradient5.png'
+import gradient5 from '../../public/assets/gradients/Gradient6.png'
 
 import 'public/globals.css'
 
@@ -25,7 +24,7 @@ export const metadata = {
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-	const gradient = [gradient1, gradient2, gradient3, gradient4, gradient5, gradient6]
+	const gradient = [gradient1, gradient2, gradient3, gradient4, gradient5]
 	const randomIndex = Math.floor(Math.random() * gradient.length);
 	return (
 		<html lang="en">
