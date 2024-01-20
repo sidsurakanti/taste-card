@@ -1,5 +1,5 @@
 # Taste Card
-Showcase your recent musical preferences in an aesthetic manner.
+Showcase your recent musical preferences with a small aesthetic card.
 
 ## Overview
 The application creates a visually appealing card, displaying the user's top five songs from a selected period. 
