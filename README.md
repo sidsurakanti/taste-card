@@ -1,4 +1,4 @@
-# Taste Card
+# Description
 Showcase your recent musical preferences with a small aesthetic card.
 
 ## Overview
