@@ -11,7 +11,7 @@ export async function GET(request: NextRequest, response: NextResponse) {
 	// if token already exists in cookies, return
 	if (token) {
 		console.log("token already exists in cookies");
-		return new NextResponse("Success");
+		return new NextResponse("Success!");
 	}
 
 	// set new params for getting access token from spotify endpoints
@@ -36,7 +36,7 @@ export async function GET(request: NextRequest, response: NextResponse) {
 	console.log("set cookie");
 
 	// set access token in cookies
-	return new NextResponse("Hello world,", {
+	return new NextResponse("Hello!", {
     status: 200,
     headers: {
       "Set-Cookie": `token=${data.access_token}`
