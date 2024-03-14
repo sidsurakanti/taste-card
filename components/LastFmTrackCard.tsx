@@ -1,10 +1,6 @@
 import type { SpotifyArtist, LastFmTrack } from "@lib/defintions";
 import {
-  SpotifyOAuth,
   SpotifyAPI,
-  CLIENT_ID,
-  CLIENT_SECRET,
-  REDIRECT_URI,
   spotifyOAuth,
 } from "@/lib/spotify";
 import { cn } from "@lib/utils";
@@ -55,7 +51,7 @@ export async function LastFmTrackCard({
 
       {/* card content */}
       <section className="w-full flex items-center justify-between">
-        <div className="flex items-center gap-5 group-hover:translate-x-20 transition-transform duration-500">
+        <div className="flex items-center gap-5 group-hover:md:translate-x-20 transition-transform duration-500">
           <span className="z-10 relative">
             <p className="font-semibold text-lg">{name}</p>
             <p>{artist.name}</p>
