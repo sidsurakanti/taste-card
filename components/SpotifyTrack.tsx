@@ -3,6 +3,8 @@ import { cn } from "@lib/utils";
 import Image from "next/image";
 import { inter } from "@/styles/fonts";
 import { SpotifyAPI } from "@lib/spotify";
+import { LinkToIcon } from "@components/ui/icons";
+import Link from "next/link";
 
 export async function SpotifyTrackDisplay({
 	track,
@@ -17,6 +19,7 @@ export async function SpotifyTrackDisplay({
 	const artist: SpotifyArtist = await instance.getArtistWithUrl(
 		artists[0].href
 	);
+	const linkToTrack: string = track.external_urls.spotify;
 
 	// get artist and album images
 	const artistImage: string = artist.images[0].url;
@@ -38,8 +41,13 @@ export async function SpotifyTrackDisplay({
 			/>
 
 			{/* card content */}
-			<section className="w-full flex items-center justify-between">
-				<div className="flex items-center gap-5 group-hover:md:translate-x-20 transition-transform duration-500">
+			<section className="w-full flex items-center justify-between p-2">
+				<div className="flex items-center gap-5 group-hover:md:translate-x-20 transition-all duration-500">
+					<div>
+						<Link href={linkToTrack}>
+							<LinkToIcon className="w-6 h-6 hidden group-hover:block" />
+						</Link>
+					</div>
 					{/* we can't use next/image here because something doesn't work when we're downloading it */}
 					{/* the performance downgrade is negligable */}
 					<Image
@@ -47,7 +55,7 @@ export async function SpotifyTrackDisplay({
 						alt="album image"
 						width={90}
 						height={90}
-						className="z-20 relative rounded-xl"
+						className="z-20 relative"
 						unoptimized // the optimized image type isn't supported when downloading the image
 					/>
 
