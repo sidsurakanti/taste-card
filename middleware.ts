@@ -3,7 +3,6 @@ import type { NextRequest } from "next/server";
 
 export async function middleware(request: NextRequest) {
   console.log("middleware");
-
   // if user is directly trying to access /spotify
   // check if they have required tokens first
   if (request.nextUrl.pathname === "/spotify") {
@@ -19,12 +18,12 @@ export async function middleware(request: NextRequest) {
     } else if (!access_token && refresh_token) {
       console.log("ACCESS TOKEN EXPIRED, REFRESHING TOKENS");
       return NextResponse.redirect(
-        "http://localhost:3000/callback?refresh=true",
+        `${request.nextUrl.origin}/callback?refresh=true`,
       );
     }
 
     console.log("NO TOKENS FOUND, REDIRECTING BACK TO HOME PAGE");
-    return NextResponse.redirect("http://localhost:3000/#error");
+    return NextResponse.redirect(`${request.nextUrl.origin}/#error`);
   }
 
   return NextResponse.next();

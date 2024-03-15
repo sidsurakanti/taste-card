@@ -41,16 +41,16 @@ export async function GET(req: NextRequest) {
     );
     SpotifyOAuth.addTokensToCookies(cookies, tokens);
 
-    return NextResponse.redirect("http://localhost:3000/spotify");
+    return NextResponse.redirect(`${req.nextUrl.origin}/spotify`);
   }
 
   // TODO: handle state checking more gracefully
   if (error || !state)
-    return NextResponse.redirect("http://localhost:3000/#error");
+    return NextResponse.redirect(`${req.nextUrl.origin}/#error`);
   // both access token already exist, redirect to results page
   else if (access_token) {
     console.log("ACCESS TOKEN ALREADY SET");
-    return NextResponse.redirect("http://localhost:3000/spotify");
+    return NextResponse.redirect(`${req.nextUrl.origin}/spotify`);
   }
 
   // refresh token flow
@@ -63,7 +63,7 @@ export async function GET(req: NextRequest) {
       SpotifyOAuth.addTokensToCookies(cookies, tokens);
     } catch (e) {
       console.error(e);
-      return NextResponse.redirect("http://localhost:3000/#error");
+      return NextResponse.redirect(`${req.nextUrl.origin}/#error`);
     }
   } else {
     console.log("NO TOKENS FOUND, SETTING NEW TOKENS");
@@ -74,11 +74,11 @@ export async function GET(req: NextRequest) {
       SpotifyOAuth.addTokensToCookies(cookies, token);
     } catch (e) {
       console.error(e);
-      return NextResponse.redirect("http://localhost:3000/#error");
+      return NextResponse.redirect(`${req.nextUrl.origin}/#error`);
     }
   }
 
   console.log("SET ACCESS TOKEN AND REFRESH TOKEN COOKIES");
   // redirect response to results page
-  return NextResponse.redirect("http://localhost:3000/spotify");
+  return NextResponse.redirect(`${req.nextUrl.origin}/spotify`);
 }
