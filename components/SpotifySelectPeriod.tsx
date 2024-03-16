@@ -7,7 +7,7 @@ export function SpotifySelectPeriod() {
 	const searchParams = useSearchParams();
 	const router = useRouter();
 	const pathname = usePathname();
-	const period = searchParams.get("period") || "medium_term";
+	const period = searchParams.get("period") || "long_term";
 
 	const changePeriod = (e: string) => {
 		const newPeriod = e;
