@@ -78,7 +78,9 @@ class SpotifyOAuth {
 			},
 			body: params.toString(),
 			next: {
-				revalidate: 3600,
+				// some value before 60 minutes so we don't use cached token after it expires
+				// not set to 0 because we don't want to make a request to spotify every time
+				revalidate: 900, // 15 minutes
 			},
 		});
 
@@ -110,7 +112,8 @@ class SpotifyOAuth {
 			},
 			body: params.toString(),
 			next: {
-				revalidate: 0, // because the access token expires every hour
+				// don't cache the response because we want to get a new token every time
+				revalidate: 0,
 			},
 		});
 
@@ -127,7 +130,8 @@ class SpotifyOAuth {
 			console.error(
 				"ERROR REFRESHING ACCESS TOKEN",
 				res.status,
-				res.statusText
+				res.statusText,
+				newToken
 			);
 
 		console.log("REFRESHED ACCESS TOKEN");
