@@ -1,8 +1,5 @@
 import type { SpotifyArtist, LastFmTrack } from "@lib/defintions";
-import {
-  SpotifyAPI,
-  spotifyOAuth,
-} from "@lib/spotify";
+import { SpotifyAPI, spotifyOAuth } from "@lib/spotify";
 import { cn } from "@lib/utils";
 import { inter } from "@/styles/fonts";
 

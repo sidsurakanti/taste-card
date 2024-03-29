@@ -16,6 +16,7 @@ If you need any help, feel free to reach out to me!
 - Last.fm API
 
 ## Structure
+
 This repository is structured as follows:
 
 ```
@@ -75,13 +76,12 @@ git checkout -b my-new-branch
 npm install
 ```
 
-
 ### Create a new .env.local file and populate it as such
 
 ```bash
 # you can get one @ https://www.last.fm/api/account/create
 LAST_FM_API_KEY="CHANGE THIS"
-# see: https://developer.spotify.com/documentation/web-api/concepts/apps 
+# see: https://developer.spotify.com/documentation/web-api/concepts/apps
 SPOTIFY_CLIENT_ID="CHANGE THIS"
 SPOTIFY_CLIENT_SECRET="CHANGE THIS"
 # make sure to add this callback route when creating your spotify app
@@ -121,4 +121,5 @@ https://www.conventionalcommits.org/ or check out the
 [Angular Commit Message Guidelines](https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#-commit-message-guidelines).
 
 ## Requests for new features
+
 If you have a request for a new feature, please open a discussion on GitHub or contact me. I'll be happy to help you out.
