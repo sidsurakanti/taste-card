@@ -16,7 +16,7 @@ export function Footer() {
         </li>
 
         <li className="hover:-translate-y-1 hover:underline hover:underline-offset-4 transition-transform">
-          <Link href="https://github.com/sidsurakanti/taste-card/tree/remake">
+          <Link href="https://github.com/sidsurakanti/taste-card/">
             code
           </Link>
         </li>
