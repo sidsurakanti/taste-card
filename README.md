@@ -74,8 +74,8 @@ Refer to [CONTRIBUTING.md](./docs/CONTRIBUTING.md)
 ## Roadmap
 
 - [x] Clean up code
+- [x] Write a better README
 - [ ] Get Spotify API Quota Extension
-- [ ] Write a better README
 - [ ] Add a new feature
 
 ## Support
