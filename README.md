@@ -8,7 +8,7 @@ View a clean, aesthetic overview of your recent music trends.
 ## Features
 
 - Last.fm support
-- Spotify support (limited because I'm currently in the process of applying for quota extension for their API use)
+- Spotify support (limited because spotify API requirements)
 
 ## Stack
 
